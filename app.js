@@ -6,8 +6,8 @@ app.config(function($routeProvider)  {
         // homepage
         .when('/', {
             // this is a template
-            templateUrl: 'pages/home/home.html',
-            controller : 'homeController as homeCtrl'
+            templateUrl: 'pages/homeUnregistered/homeUnregistered.html',
+            controller : 'homeUnregisteredController as homeUnregisteredCtrl'
         })
         // about
         .when('/about', {
@@ -40,9 +40,9 @@ app.config(function($routeProvider)  {
             templateUrl: 'pages/poiDetails/poiDetails.html',
             controller : 'poiDetailsController as poiDetailsCtrl'
         })
-        .when('/poiUser', {
-            templateUrl: 'pages/poiUser/poiUser.html',
-            controller : 'poiUserController as poiUserCtrl'
+        .when('/homeRegistered', {
+            templateUrl: 'pages/homeRegistered/homeRegistered.html',
+            controller : 'homeRegisteredController as homeRegisteredCtrl'
         })
         // other
         .otherwise({ redirectTo: '/' });
