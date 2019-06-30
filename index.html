@@ -26,7 +26,8 @@
 <script src="pages/homeUnregistered/homeUnregisteredController.js"></script>
 <script src="pages/homeRegistered/homeRegisteredController.js"></script>
 
-
+<!-- load services -->
+<script src="services/ServerHandler.js"></script>
 
 
 
@@ -40,7 +41,7 @@
     <h1 ng-init="loggedUsername='guest'">Hello {{loggedUsername}}!</h1>
 
     <!-- menu -->
-    <ul ng-init="isLogged=true">
+    <ul ng-init="isLogged=false">
         <li ng-show="!isLogged">
             <a href="#!">Home</a>
         </li>

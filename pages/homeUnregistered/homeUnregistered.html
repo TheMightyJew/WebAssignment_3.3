@@ -4,12 +4,12 @@
             height: 300px;
         }
     </style>
-    
+    <script src="services/ServerHandler.js"></script>
     <h2>POI</h2>
     
     <!-- display all cities -->
     <center>
-        <p ng-repeat="(id, poi) in homeCtrl.pointsOfInterests">
+        <p ng-repeat="(id, poi) in homeUnregisteredCtrl.pointsOfInterests">
             <br>
             <span ng-bind="poi.name"></span>
             <br>
