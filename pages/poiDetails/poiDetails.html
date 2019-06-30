@@ -1,0 +1,17 @@
+<center>
+    <h1 ng-bind="poi.name"></h1>
+    <br>
+    <img ng-src="{{poi.image}}" width="600px">
+    <br>
+    <p ng-bind="poi.watchedNum"></p> watched this point of interest.
+    <br>
+    <p ng-bind="poi.description"></p>
+    Rank: <p ng-bind="poi.rank"></p>
+    <br>
+    <h2>Reviews:</h2>
+    <div ng-repeat="review in poiReviews">
+        <p ng-bind="review.date"></p>
+        <br>
+        <p ng-bind="review.description"></p>
+    </div>
+</center>

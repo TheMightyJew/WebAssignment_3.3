@@ -1,0 +1,18 @@
+<!-- css -->
+<style>
+        img {
+            height: 300px;
+        }
+    </style>
+    
+    <h2>POI</h2>
+    
+    <!-- display all cities -->
+    <center>
+        <p ng-repeat="(id, poi) in homeCtrl.pointsOfInterests">
+            <br>
+            <span ng-bind="poi.name"></span>
+            <br>
+            <img ng-src="{{ poi.image }}">
+        </p>
+    </center>

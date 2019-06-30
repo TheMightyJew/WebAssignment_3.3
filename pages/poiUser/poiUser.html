@@ -1,0 +1,42 @@
+<!-- css -->
+<style>
+    img {
+        height: 300px;
+    }
+</style>
+
+<h2>POI</h2>
+
+<!-- display all cities -->
+<center>
+    <table>
+        <tr>
+            <td>
+                <h3 ng-bind="topic1">{{topic1}}</h3>
+                <span ng-bind="poiTopic1.name"></span>
+                <br>
+                <img ng-src="{{ poiTopic1.image }}">
+            </td>
+            <td>
+                <h3>Last Saved</h3>
+                <span ng-bind="lastSaved.name"></span>
+                <br>
+                <img ng-src="{{ lastSaved.image }}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3 ng-bind="topic2"></h3>
+                <span ng-bind="poiTopic2.name"></span>
+                <br>
+                <img ng-src="{{ poiTopic2.image }}">
+            </td>
+            <td>
+                <h3>Previous Saved</h3>
+                <span ng-bind="previousSaved.name"></span>
+                <br>
+                <img ng-src="{{ previousSaved.image }}">
+            </td>
+        </tr>
+    </table>
+</center>
