@@ -1,15 +1,14 @@
 <body>
     <form name="loginForm" ng-submit="login()" novalidate>
-        Username: <input type="text" name="loginUsername" ng-model="loginUsername" required '>
+        Username: <input type="text" name="loginUsername" ng-model="username" required '>
         <span ng-show="loginForm.loginUsername.$error.required">This is required!</span>
         <span ng-show="loginForm.loginUsername.$invalid">Invalid field</span>
         <br><br>
-        Password: <input type="text" name="loginPassword" ng-model="loginPassword" required>
+        Password: <input type="text" name="loginPassword" ng-model="password" required>
         <span ng-show="loginForm.loginPassword.$error.required">This is required!</span>
         <span ng-show="loginForm.loginPassword.$invalid">Invalid field</span>
         <br><br>
         <input type="submit" ng-disabled="loginForm.$invalid" id="login" value="login">
+        <button ng-click="recoverPassword()">Recover Password</button>
     </form>
-    <p>{{ answer }}</p>
-
 </body>
