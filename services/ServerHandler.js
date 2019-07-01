@@ -26,7 +26,7 @@ app.service('ServerHandler', function($http) {
         });
     }
 
-    //doesn't work yet, something is wrong with the POST method
+    //works
     this.Restore_Password = function(Username, Question_ID, Answer) {
         return new Promise(function(resolve, reject){
             var req = {
@@ -55,7 +55,7 @@ app.service('ServerHandler', function($http) {
         });
     }
 
-    //doesn't work yet, something is wrong with the POST method
+    //works
     this.Get_Recommended_Points_Of_Interest = function(Token) {
         return new Promise(function(resolve, reject){
             var req = {
@@ -70,7 +70,7 @@ app.service('ServerHandler', function($http) {
         });
     }
 
-    //doesn't work yet, something is wrong with the POST method
+    //works
     this.Get_Two_Last_Saved_Points_Of_Interest = function(Token) {
         return new Promise(function(resolve, reject){
             var req = {
@@ -85,7 +85,7 @@ app.service('ServerHandler', function($http) {
         });
     }
 
-    //doesn't work yet, something is wrong with the POST method
+    //works
     this.Register_User = function(Username,Password,First_Name,Last_Name,City,Country,Email,Topics_List,Security_Questions_List) {
         return new Promise(function(resolve, reject){
             var req = {
@@ -108,7 +108,7 @@ app.service('ServerHandler', function($http) {
         });
     }
 
-    //doesn't work yet, something is wrong with the POST method
+    //works
     this.Login = function(Username,Password) {
         return new Promise(function(resolve, reject){
             var req = {
@@ -160,7 +160,7 @@ app.service('ServerHandler', function($http) {
         });
     }
 
-    //doesn't work yet, something is wrong with the POST method
+    //works
     this.Get_All_Favorites = function(Token) {
         return new Promise(function(resolve, reject){
             var req = {
@@ -175,7 +175,7 @@ app.service('ServerHandler', function($http) {
         });
     }
 
-    //doesn't work yet, something is wrong with the POST method
+    //works
     this.Add_To_Favorites = function(Token, POI_ID) {
         return new Promise(function(resolve, reject){
             var req = {
@@ -193,11 +193,11 @@ app.service('ServerHandler', function($http) {
         });
     }
 
-    //need to check
+    //works
     this.Remove_From_Favorites = function(Token, POI_ID) {
         return new Promise(function(resolve, reject){
             var req = {
-                method: 'DELETE',
+                method: 'PUT',
                 url: serverURL + '/Remove_From_Favorites',
                 headers: {
                     'x-auth-token': Token
@@ -211,7 +211,7 @@ app.service('ServerHandler', function($http) {
         });
     }
 
-    //need to check
+    //works
     this.Update_Favorite_Location = function(Token, POI_ID, Location) {
         return new Promise(function(resolve, reject){
             var req = {
@@ -230,17 +230,16 @@ app.service('ServerHandler', function($http) {
         });
     }
 
-    //need to check
-    this.Update_Favorite_Location = function(Token, POI_And_Location_List) {
+    //works
+    this.Update_Favorites_List_Locations = function(Token, POI_And_Location_List) {
         return new Promise(function(resolve, reject){
             var req = {
                 method: 'PUT',
-                url: serverURL + '/Update_Favorite_Location',
+                url: serverURL + '/Update_Favorites_List_Locations',
                 headers: {
                     'x-auth-token': Token
                 },
                 data: {
-                    POI_ID: POI_ID,
                     POI_And_Location_List: POI_And_Location_List
                 }
             }
@@ -249,7 +248,7 @@ app.service('ServerHandler', function($http) {
         });
     }
 
-    //need to check
+    //works
     this.Add_Review = function(Token, POI_ID, Rank, Description) {
         return new Promise(function(resolve, reject){
             var req = {
