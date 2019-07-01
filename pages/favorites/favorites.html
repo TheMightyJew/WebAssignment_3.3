@@ -1,0 +1,18 @@
+<!-- css -->
+<style>
+    img {
+        height: 300px;
+    }
+</style>
+
+<h2>Favorites:</h2>
+
+<!-- display all cities -->
+<center>
+    <p ng-repeat="(id, poi) in favoritesCtrl.favoritePois">
+        <br>
+        <span ng-click="showPoi(poi.name)" ng-bind="poi.name"></span>
+        <br>
+        <img ng-click="showPoi(poi.name)" ng-src="{{ poi.image }}">
+    </p>
+</center>

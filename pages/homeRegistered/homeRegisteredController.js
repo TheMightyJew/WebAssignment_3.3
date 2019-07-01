@@ -9,5 +9,7 @@ angular.module("myApp")
     $scope.previousSaved = self.poi;
     $scope.topic1 = "Attractions";
     $scope.topic2 = "Parks";
-
+    $scope.showPoi = function (poiName) {
+        $window.location.href = "#!poiDetails/:" + poiName;
+    };
 });
