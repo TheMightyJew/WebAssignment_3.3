@@ -44,20 +44,17 @@
     </button>
     <!-- menu -->
     <ul ng-init="isLogged=false">
-        <li>
-            <a href="#!">Explore</a>
-        </li>
         <li ng-show="isLogged">
             <a href="#!homeRegistered">Home</a>
+        </li>
+        <li>
+            <a href="#!">Explore</a>
         </li>
         <li>
             <a href="#!about">About</a>
         </li>
         <li>
             <a href="#!poi">POI</a>
-        </li>
-        <li>
-            <a href="#!httpRequest">POI_HTTP_EXAMPLE</a>
         </li>
         <li ng-show="!isLogged">
             <a href="#!login">Login</a>

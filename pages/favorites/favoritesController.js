@@ -10,4 +10,22 @@ angular.module("myApp")
         $scope.showPoi = function (poiName) {
             $window.location.href = "#!poiDetails/:" + poiName;
         };
+        $scope.categoriesSort = function () {
+            //stuff;
+            saveLocalOrder();
+        }
+        $scope.rankSort = function () {
+            //stuff;
+            saveLocalOrder();
+        }
+        $scope.resetOrder = function () {
+            //stuff;
+            saveLocalOrder();
+        }
+        $scope.saveOrder = function () {
+
+        }
+        function saveLocalOrder() {
+            //stuff
+        }
     });

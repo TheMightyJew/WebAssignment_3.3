@@ -8,6 +8,12 @@
 <h2>Favorites:</h2>
 
 <!-- display all cities -->
+<button ng-click="categoriesSort">Sort By Categories</button>
+<button ng-click="rankSort">Sort By Rank</button>
+<button ng-click="resetOrder">Reset Order</button>
+<br>
+<br>
+<button ng-click="saveOrder">Save Favorites Order</button>
 <center>
     <p ng-repeat="(id, poi) in favoritesCtrl.favoritePois">
         <br>
