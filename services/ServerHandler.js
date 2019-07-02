@@ -10,7 +10,9 @@ app.service('ServerHandler', function($http) {
                 url: serverURL + '/Get_Details_About_A_Point_Of_Interest/' + POI_ID
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, function(data){
+                return data.POI_ID !== undefined;
+            });
         });
     }
 
@@ -22,7 +24,9 @@ app.service('ServerHandler', function($http) {
                 url: serverURL + '/Get_Security_Question/' + Username
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, function(data){
+                return data.Question_ID !== undefined;
+            });
         });
     }
 
@@ -39,7 +43,9 @@ app.service('ServerHandler', function($http) {
                 }
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, function(data){
+                return data.Password !== undefined;
+            });
         });
     }
 
@@ -51,7 +57,7 @@ app.service('ServerHandler', function($http) {
                 url: serverURL + '/Get_Random_Points_Of_Interests'
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, checkPOIList);
         });
     }
 
@@ -66,7 +72,7 @@ app.service('ServerHandler', function($http) {
                 }
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, checkPOIList);
         });
     }
 
@@ -81,7 +87,7 @@ app.service('ServerHandler', function($http) {
                 }
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, checkPOIList);
         });
     }
 
@@ -104,7 +110,9 @@ app.service('ServerHandler', function($http) {
                 }
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, function(data){
+                return data === 'Successfuly added the new user!';
+            });
         });
     }
 
@@ -120,7 +128,9 @@ app.service('ServerHandler', function($http) {
                 }
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, function(data){
+                return data.Token !== undefined;
+            });
         });
     }
 
@@ -132,7 +142,7 @@ app.service('ServerHandler', function($http) {
                 url: serverURL + '/Get_All_Points_Of_Interest'
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, checkPOIList);
         });
     }
 
@@ -144,7 +154,7 @@ app.service('ServerHandler', function($http) {
                 url: serverURL + '/Get_Points_Of_Interest_By_Topic/' + Topic_ID
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, checkPOIList);
         });
     }
 
@@ -156,7 +166,7 @@ app.service('ServerHandler', function($http) {
                 url: serverURL + '/Get_Points_Of_Interest_By_Name/' + POI_Name
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, checkPOIList);
         });
     }
 
@@ -171,7 +181,7 @@ app.service('ServerHandler', function($http) {
                 }
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, checkPOIList);
         });
     }
 
@@ -189,7 +199,7 @@ app.service('ServerHandler', function($http) {
                 }
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, checkSuccess);
         });
     }
 
@@ -207,7 +217,7 @@ app.service('ServerHandler', function($http) {
                 }
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, checkSuccess);
         });
     }
 
@@ -226,7 +236,7 @@ app.service('ServerHandler', function($http) {
                 }
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, checkSuccess);
         });
     }
 
@@ -244,7 +254,7 @@ app.service('ServerHandler', function($http) {
                 }
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, checkSuccess);
         });
     }
 
@@ -266,7 +276,7 @@ app.service('ServerHandler', function($http) {
                 }
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, checkSuccess);
         });
     }
 
@@ -278,7 +288,9 @@ app.service('ServerHandler', function($http) {
                 url: serverURL + '/Get_POI_Image/' + POI_ID
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, function(data){
+                return data.Image_Path !== undefined;
+            });
         });
     }
 
@@ -290,17 +302,32 @@ app.service('ServerHandler', function($http) {
                 url: serverURL + '/Get_POI_Name/' + POI_ID
             }
 
-            sendRequest(req, resolve, reject);
+            sendRequest(req, resolve, reject, function(data){
+                return data.POI_Name !== undefined;
+            });
         });
     }
 
-    function sendRequest(req, resolve, reject){
+    function sendRequest(req, resolve, reject, isGoodResult){
         $http(req).then(function Success(response){
-            resolve(response.data);
+            if(isGoodResult(response.data)){
+                resolve(response.data);
+            }
+            else{
+                reject(response.data);
+            }
         }, function Failure(response){
             console.log(response)
             reject(response.data);
         });
+    }
+
+    function checkPOIList(data){
+        return data !== undefined && data.length > 0 && data[0].POI_ID !== undefined;
+    }
+
+    function checkSuccess(data){
+        return data === 'Success';
     }
 })
 
