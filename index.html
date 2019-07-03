@@ -21,8 +21,10 @@
 <script src="pages/register/registerController.js"></script>
 <script src="pages/recoverPassword/recoverPasswordController.js"></script>
 <script src="pages/poiDetails/poiDetailsController.js"></script>
-<script src="pages/homeUnregistered/homeUnregisteredController.js"></script>
+<script src="pages/explore/exploreController.js"></script>
 <script src="pages/homeRegistered/homeRegisteredController.js"></script>
+<script src="pages/favorites/favoritesController.js"></script>
+
 
 <!-- load services -->
 <script src="services/ServerHandler.js"></script>
@@ -37,23 +39,22 @@
 
     <!-- the website -->
     <h1 ng-init="loggedUsername='guest'">Hello {{loggedUsername}}!</h1>
-
+    <button ng-show="isLogged">
+        <a ng-init="favoritesCount='Favorites (0)'" ng-bind="favoritesCount" href="#!favorites"></a>
+    </button>
     <!-- menu -->
     <ul ng-init="isLogged=false">
-        <li ng-show="!isLogged">
-            <a href="#!">Home</a>
-        </li>
         <li ng-show="isLogged">
             <a href="#!homeRegistered">Home</a>
+        </li>
+        <li>
+            <a href="#!">Explore</a>
         </li>
         <li>
             <a href="#!about">About</a>
         </li>
         <li>
             <a href="#!poi">POI</a>
-        </li>
-        <li>
-            <a href="#!httpRequest">POI_HTTP_EXAMPLE</a>
         </li>
         <li ng-show="!isLogged">
             <a href="#!login">Login</a>

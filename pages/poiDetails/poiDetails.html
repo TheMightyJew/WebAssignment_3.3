@@ -15,5 +15,7 @@
         <p ng-bind="review.description"></p>
     </div>
     <br><br>
-    <button ng-click="save()" >Save Point Of Interest</button>
+    <div ng-show="isLogged">
+        Favorite <input type="checkbox" name="isFavorite" ng-click="save()">
+    </div>
 </center>

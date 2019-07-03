@@ -1,0 +1,24 @@
+<!-- css -->
+<style>
+    img {
+        height: 300px;
+    }
+</style>
+
+<h2>Favorites:</h2>
+
+<!-- display all cities -->
+<button ng-click="categoriesSort">Sort By Categories</button>
+<button ng-click="rankSort">Sort By Rank</button>
+<button ng-click="resetOrder">Reset Order</button>
+<br>
+<br>
+<button ng-click="saveOrder">Save Favorites Order</button>
+<center>
+    <p ng-repeat="(id, poi) in favoritesCtrl.favoritePois">
+        <br>
+        <span ng-click="showPoi(poi.name)" ng-bind="poi.name"></span>
+        <br>
+        <img ng-click="showPoi(poi.name)" ng-src="{{ poi.image }}">
+    </p>
+</center>

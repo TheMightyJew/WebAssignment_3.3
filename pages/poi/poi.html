@@ -8,11 +8,24 @@
 <h2>POI</h2>
 
 <!-- display all cities -->
+<button ng-click="categoriesSort">Sort By Categories</button>
+<button ng-click="rankSort">Sort By Rank</button>
+<br><br>
+Show Category: <select name="category" id="category" ng-model="selectedCategory"
+    ng-options="x for x in categories"></select>
+<button ng-click="show">Show!</button>
+<br>
+<br>
+Search By Name: <input type="text" ng-model="poiNameSearch">
+<button ng-click="search">Search!</button>
 <center>
-    <p ng-repeat="(id, poi) in poiCtrl.pointsOfInterests">
-        <br>
-        <span ng-bind="poi.name"></span>
-        <br>
-        <img ng-src="{{ poi.image }}">
-    </p>
+    <div ng-repeat="(topic, poiList) in poiCtrl.pointsOfInterests">
+        <span ng-bind="topic"></span>
+        <p ng-repeat="(id, poi) in poiList">
+            <br>
+            <span ng-bind="poi.name"></span>
+            <br>
+            <img ng-src="{{ poi.image }}">
+        </p>
+    </div>
 </center>
