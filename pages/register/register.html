@@ -1,5 +1,5 @@
 <body>
-    <form name="registerForm" ng-submit="()" novalidate>
+    <form name="registerForm" ng-submit="register()" novalidate>
         First Name: <input type="text" name="registerFirstName" ng-model="registerFirstName" required
             pattern='^[a-zA-Z]*$'>
         <span ng-show="registerForm.registerFirstName.$error.required">This is required!</span>
@@ -7,7 +7,7 @@
         <span ng-show="registerForm.registerFirstName.$invalid">Invalid field</span>
         <br>
         Last Name: <input type="text" name="registerLastName" ng-model="registerLastName" required
-            pattern='^[a-zA-Z]*$'>
+            pattern='^[a-zA-Z ]*$'>
         <span ng-show="registerForm.registerLastName.$error.required">This is required!</span>
         <span ng-show="registerForm.registerLastName.$error.pattern">Letters only!</span>
         <span ng-show="registerForm.registerLastName.$invalid">Invalid field</span>
@@ -22,7 +22,7 @@
         <br><br>
         Email: <input type="email" name="registerEmail" ng-model="registerEmail" required>
         <span ng-show="registerForm.registerEmail.$error.required">This is required!</span>
-        <span ng-show="registerForm.registerCity.$invalid">Invalid field</span>
+        <span ng-show="registerForm.registerEmail.$invalid">Invalid field</span>
         <br><br>
         Topic 1: <select name="selectedTopic1" ng-model="selectedTopic1" ng-options="x for x in topics" required>
         </select>
@@ -50,7 +50,7 @@
         <span ng-show="registerForm.registerUsername.$error.minlength">Minimum length is 3!</span>
         <span ng-show="registerForm.registerUsername.$invalid">Invalid field</span>
         <br>
-        Password: <input type="text" name="registerPassword" ng-model="registerPassword" required minlength="5"
+        Password: <input type="password" name="registerPassword" ng-model="registerPassword" required minlength="5"
             maxlength="10" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{0,10}$">
         <span ng-show="registerForm.registerPassword.$error.required">This is required!</span>
         <span ng-show="registerForm.registerPassword.$error.pattern">Password must combine both letters and
@@ -60,6 +60,5 @@
         <br><br>
         <input type="submit" ng-disabled="registerForm.$invalid" id="register" value="register">
     </form>
-    <p>{{ answer }}</p>
 
 </body>

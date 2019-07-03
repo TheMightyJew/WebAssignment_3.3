@@ -1,11 +1,11 @@
-<form name="reviewForm" ng-submit="()" novalidate>
-        Rank: <select name="reviewRank" ng-model="reviewRank" ng-init="ranks={1,2,3,4,5}" ng-options="x for x in ranks" required></select>
+<form name="reviewForm" ng-submit="submitReview()" novalidate>
+        Rank: <select name="reviewRank" ng-model="reviewRank" ng-options="x for x in [1,2,3,4,5]" required></select>
         <span ng-show="reviewForm.reviewRank.$error.required">This is required!</span>
         <span ng-show="reviewForm.reviewRank.$invalid">Invalid field</span>
         <br><br>
-        Opinion: <input type="text" name="opinion" ng-model="opinion" required>
-        <span ng-show="reviewForm.opinion.$error.required">This is required!</span>
-        <span ng-show="reviewForm.opinion.$invalid">Invalid field</span>
+        Description: <input type="text" name="description" ng-model="description" required>
+        <span ng-show="reviewForm.description.$error.required">This is required!</span>
+        <span ng-show="reviewForm.description.$invalid">Invalid field</span>
         <br><br>
         <input type="submit" ng-disabled="reviewForm.$invalid" id="submitReview" value="submitReview">
 </form>

@@ -3,21 +3,25 @@
     <br>
     <img ng-src="{{poi.image}}" width="600px">
     <br>
-    <p ng-bind="poi.Number_Of_Views"></p> watched this point of interest.
+    <b><span style="font-size: 18px" ng-bind="poi.Number_Of_Views"></span></b> watched this point of interest.
     <br>
     <p ng-bind="poi.Description"></p>
     Rank: <p ng-bind="poi.Percentage_Rank"></p>
     <br>
     <h2>Reviews:</h2>
-    <div ng-repeat="review in Two_Latest_Reviews">
-        <p ng-bind="review.Date"></p>
+    <div ng-repeat="review in poi.Two_Latest_Reviews">
+        <h3>Review:</h3>
+        Date: <p ng-bind="review.Date"></p>
         <br>
-        <p ng-bind="review.Description"></p>
+        Description: <p ng-bind="review.Description"></p>
         <br>
-        <p ng-bind="review.Rank"></p>
+        Rank: <p ng-bind="review.Rank"></p>
+        <br>
     </div>
-    <br><br>
+    <br>
     <div ng-show="isLogged">
         Favorite <input type="checkbox" name="isFavorite" ng-click="save()">
+        <br><br>
+        <Button ng-click='addReview()'>Add Review</Button>
     </div>
 </center>

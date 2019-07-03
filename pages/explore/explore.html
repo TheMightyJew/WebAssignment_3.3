@@ -9,10 +9,10 @@
     
     <!-- display all cities -->
     <center>
-        <p ng-repeat="(id, poi) in exploreCtrl.pointsOfInterests">
+        <p ng-repeat="poi in Points">
             <br>
-            <span ng-click="showPoi(poi.name)" ng-bind="poi.name"></span>
+            <span ng-click="showPoi(poi.POI_ID)" ng-bind="poi.Name"></span>
             <br>
-            <img ng-click="showPoi(poi.name)" ng-src="{{ poi.image }}">
+            <img ng-click="showPoi(poi.POI_ID)" ng-src="{{ poi.Image_Path }}">
         </p>
     </center>

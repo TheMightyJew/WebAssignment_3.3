@@ -1,6 +1,6 @@
 // poi controller
 angular.module("myApp")
-    .controller("poiDetailsController", function ($scope, $window, $routeParams) {
+    .controller("poiDetailsController", function ($scope, $window, $routeParams, ServerHandler,UtilFunctions) {
         self.poiID = $routeParams.poiID;
         self.logged = $window.sessionStorage.getItem("isLogged");
         if (self.logged === null || self.logged === undefined || self.logged === false) {
@@ -14,8 +14,8 @@ angular.module("myApp")
                 $scope.poi = response;
                 ServerHandler.Get_POI_Image(self.poiID)
                     .then(function (response) {
-                        console.log(response);
-                        $scope.poi.image=response.Image_Path;
+                        $scope.poi.image = response.Image_Path;
+                        $scope.$apply();
                     }).catch(function (err) {
                         console.log('There was a problem with the image');
                         console.log(err);
@@ -25,20 +25,17 @@ angular.module("myApp")
                 console.log(err);
                 UtilFunctions.Message("Failed");
             })
-        console.log(response);
-        $scope.poi = response;
-    }).catch(function (err) {
-        console.log('There was a problem with the log in');
-        console.log(err);
-        UtilFunctions.Message("Failed");
-    })
-$scope.save = function () {
-    self.favorite = document.getElementsByName("isFavorite")[0].checked;
-    if (favorite) {
-        //add to favorites
-    }
-    else {
-        //remove from favorites
-    }
-};
+        $scope.save = function () {
+            self.favorite = document.getElementsByName("isFavorite")[0].checked;
+            if (favorite) {
+                //add to favorites
+            }
+            else {
+                //remove from favorites
+            }
+        };
+
+        $scope.addReview = function(){
+            $window.location.href = "#!review/" + self.poiID;
+        }
     });

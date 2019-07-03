@@ -308,6 +308,46 @@ app.service('ServerHandler', function($http) {
         });
     }
 
+    this.Get_Topics = function(){
+        return new Promise(function(resolve, reject){
+            var req = {
+                method: 'GET',
+                url: serverURL + '/Get_Topics'
+            }
+
+            sendRequest(req, resolve, reject, function(data){
+                return data !== undefined && data.length > 0 && data[0].Topic_ID !== undefined;
+            });
+        });
+    }
+
+    this.Get_All_Security_Questions = function(){
+        return new Promise(function(resolve, reject){
+            var req = {
+                method: 'GET',
+                url: serverURL + '/Get_All_Security_Questions'
+            }
+
+            sendRequest(req, resolve, reject, function(data){
+                return data !== undefined && data.length > 0 && data[0].Question_ID !== undefined;
+            });
+        });
+    }
+
+    this.Get_Countries = function(){
+        return new Promise(function(resolve, reject){
+            var req = {
+                method: 'GET',
+                url: serverURL + '/Get_Countries'
+            }
+
+            sendRequest(req, resolve, reject, function(data){
+                return data !== undefined && data.length > 0 && data[0].Country !== undefined;
+            });
+        });
+    }
+
+
     function sendRequest(req, resolve, reject, isGoodResult){
         $http(req).then(function Success(response){
             if(isGoodResult(response.data)){
