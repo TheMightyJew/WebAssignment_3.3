@@ -30,9 +30,6 @@ angular.module("myApp")
                         console.log(err);
                         massage("Failed");
                     })
-                if (false) {
-
-                }
             }
             else {
                 self.recover = false;
