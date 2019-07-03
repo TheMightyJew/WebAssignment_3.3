@@ -1,6 +1,6 @@
 <body>
     <form name="loginForm" ng-submit="login()" novalidate>
-        Username: <input type="text" name="loginUsername" ng-model="username" required '>
+        Username: <input type="text" name="loginUsername" ng-model="username" required>
         <span ng-show="loginForm.loginUsername.$error.required">This is required!</span>
         <span ng-show="loginForm.loginUsername.$invalid">Invalid field</span>
         <br><br>
