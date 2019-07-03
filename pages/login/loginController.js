@@ -1,5 +1,5 @@
 angular.module("myApp")
-    .controller("loginController", function ($scope, $window,$rootScope) {
+    .controller("loginController", function ($scope, $window, $rootScope, ServerHandler) {
         self.recover = false;
         $scope.recoverPassword = function () {
             if ($scope.username === undefined) {
@@ -13,20 +13,32 @@ angular.module("myApp")
         $scope.login = function () {
             if (self.recover === false) {
                 //check if right credensionals
-                $rootScope.loggedUsername = $scope.username;
-                $rootScope.isLogged = true;
-                $window.location.href = "#!homeRegistered"
+                ServerHandler.Login('a', 'a')
+                    .then(function (response) {
+                        console.log('Logged in successfully!');
+                        console.log(response);
+                        self.userToken = response.Token;
+                        $window.sessionStorage.setItem(isLogged, true);
+                        $window.sessionStorage.setItem(token, userToken);
+                        $window.sessionStorage.setItem(username, $scope.username);
+                        massage("Logged in successfully");
+                        $rootScope.loggedUsername = $scope.username;
+                        $rootScope.isLogged = true;
+                        $window.location.href = "#!homeRegistered"
+                    }).catch(function (err) {
+                        console.log('There was a problem with the log in');
+                        console.log(err);
+                        massage("Failed");
+                    })
                 if (false) {
-                    $window.sessionStorage.setItem(isLogged, true);
-                    $window.sessionStorage.setItem(token, userToken);
-                    $window.sessionStorage.setItem(username, $scope.username);
-                    $rootScope.loggedUsername = $scope.username;
-                    $rootScope.isLogged = true;
+
                 }
             }
-            else{
+            else {
                 self.recover = false;
             }
         };
-
+        function massage(note){//change to service later
+            $window.alert(note);
+        }
     });
