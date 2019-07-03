@@ -1,4 +1,4 @@
-var serverURL = 'http://localhost:3000';
+var serverURL = 'http://192.168.1.15:3000';
 
 // ServerHandler service
 app.service('ServerHandler', function($http) {
