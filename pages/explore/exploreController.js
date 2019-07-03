@@ -2,6 +2,15 @@
 angular.module("myApp")
     .controller("exploreController", function ($scope, $window) {
         self = this;
+
+        ServerHandler.Get_Random_Points_Of_Interests()
+        .then(function (response) {
+            //how the fuck do i perfom a loop here
+        }).catch(function (err) {
+            console.log('There was a problem');
+            console.log(err);
+        })
+
         self.pointsOfInterests = {
             1: { name: "Paris", state: "France", image: "https://media-cdn.tripadvisor.com/media/photo-s/0d/f5/7c/f2/eiffel-tower-priority.jpg" },
             2: { name: "Jerusalem", state: "Israel", image: "https://cdni.rt.com/files/2017.12/article/5a3fe04efc7e93cd698b4567.jpg" },

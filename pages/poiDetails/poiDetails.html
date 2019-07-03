@@ -1,18 +1,20 @@
 <center>
-    <h1 ng-bind="poi.name"></h1>
+    <h1 ng-bind="poi.POI_Name"></h1>
     <br>
     <img ng-src="{{poi.image}}" width="600px">
     <br>
-    <p ng-bind="poi.watchedNum"></p> watched this point of interest.
+    <p ng-bind="poi.Number_Of_Views"></p> watched this point of interest.
     <br>
-    <p ng-bind="poi.description"></p>
-    Rank: <p ng-bind="poi.rank"></p>
+    <p ng-bind="poi.Description"></p>
+    Rank: <p ng-bind="poi.Percentage_Rank"></p>
     <br>
     <h2>Reviews:</h2>
-    <div ng-repeat="review in poiReviews">
-        <p ng-bind="review.date"></p>
+    <div ng-repeat="review in Two_Latest_Reviews">
+        <p ng-bind="review.Date"></p>
         <br>
-        <p ng-bind="review.description"></p>
+        <p ng-bind="review.Description"></p>
+        <br>
+        <p ng-bind="review.Rank"></p>
     </div>
     <br><br>
     <div ng-show="isLogged">
