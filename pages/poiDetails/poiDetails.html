@@ -6,19 +6,22 @@
     <b><span style="font-size: 18px" ng-bind="poi.Number_Of_Views"></span></b> watched this point of interest.
     <br>
     <p ng-bind="poi.Description"></p>
-    Rank: <p ng-bind="poi.Percentage_Rank"></p>
+    <b style="font-size: 20px">Average Rank:</b> <span ng-bind="poi.Percentage_Rank"></span>
+    <h3 ng-hide="reviewsExists" style="color: red">There is no rank yet</h3>
     <br>
-    <h2>Reviews:</h2>
+    <h2>Two latest reviews:</h2>
+    <h3 ng-hide="reviewsExists" style="color: red">There are no reviews for this Point of interest</h3>
     <div ng-repeat="review in poi.Two_Latest_Reviews">
         <h3>Review:</h3>
-        Date: <p ng-bind="review.Date"></p>
+        <span><b>Date:</b></span> <span ng-bind="review.Date"></span>
         <br>
-        Description: <p ng-bind="review.Description"></p>
+        <span><b>Description:</b></span> <span ng-bind="review.Description"></span>
         <br>
-        Rank: <p ng-bind="review.Rank"></p>
+        <span><b>Rank:</b></span> <span ng-bind="review.Rank"></span>
+        <br>
         <br>
     </div>
-    <br>
+    <h3 ng-show="oneReview" style="color: red">There is only 1 review for this point of interest.</h3>
     <div ng-show="isLogged">
         Favorite <input type="checkbox" name="isFavorite" ng-click="save()">
         <br><br>

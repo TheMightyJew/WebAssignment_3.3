@@ -28,9 +28,6 @@ angular.module("myApp")
                 passed++;
                 if(passed === 2){
                     $scope.$apply();
-                    //console.log(Points);
-                    //self.Points = Points;
-                    //initializePOI(Points);
                 }
             })
             .catch((err)=>{
@@ -46,9 +43,6 @@ angular.module("myApp")
                 passed++;
                 if(passed === 2){
                     $scope.$apply();
-                    //console.log(Points);
-                    //self.Points = Points;
-                    //initializePOI(Points);
                 }
             })
             .catch((err)=>{

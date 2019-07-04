@@ -1,14 +1,63 @@
 // poi controller
 angular.module("myApp")
-    .controller("favoritesController", function ($scope, $window) {
+    .controller("favoritesController", function ($scope, $window, ServerHandler) {
         self = this;
-        self.favoritePois = {
-            1: { name: "Paris", state: "France", image: "https://media-cdn.tripadvisor.com/media/photo-s/0d/f5/7c/f2/eiffel-tower-priority.jpg" },
-            2: { name: "Jerusalem", state: "Israel", image: "https://cdni.rt.com/files/2017.12/article/5a3fe04efc7e93cd698b4567.jpg" },
-            3: { name: "London", state: "England", image: "http://www.ukguide.co.il/Photos/England/London/British-Royal-Tour.jpg" }
-        };
-        $scope.showPoi = function (poiName) {
-            $window.location.href = "#!poiDetails/:" + poiName;
+
+        var token = $window.sessionStorage.getItem('token');
+        ServerHandler.Get_All_Favorites(token)
+        .then(function (response) {
+            //console.log(response);
+            names_list = [];
+            images_list = [];
+            $scope.Points = [];
+            var passed = 0;
+            for(var i = 0; i < response.length; i++){
+                var curr_ID = response[i].POI_ID;
+                var curr_POI = new Object();
+                curr_POI.POI_ID = curr_ID;
+                $scope.Points.push(curr_POI);
+                names_list.push(ServerHandler.Get_POI_Name(curr_ID));
+                images_list.push(ServerHandler.Get_POI_Image(curr_ID));
+            }
+
+            Promise.all(names_list)
+            .then((names)=>{
+                for(var i = 0; i < names.length; i++){
+                    $scope.Points[i].Name = names[i].POI_Name;
+                }
+                //console.log(names);
+                passed++;
+                if(passed === 2){
+                    //console.log('Done here');
+                    $scope.$apply();
+                }
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+
+            Promise.all(images_list)
+            .then((images)=>{
+                for(var i = 0; i < images.length; i++){
+                    $scope.Points[i].Image_Path = images[i].Image_Path;
+                }
+                //console.log(images);
+                passed++;
+                if(passed === 2){
+                    //console.log('Done here');
+                    $scope.$apply();
+                }
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+        }).catch(function (err) {
+            console.log(err);
+            UtilFunctions.Message('There was a problem uploading the review :(');
+        })
+        
+        $scope.showPoi = function (POI_ID) {
+            $window.location.href = "#!poiDetails/" + POI_ID;
         };
         $scope.categoriesSort = function () {
             //stuff;

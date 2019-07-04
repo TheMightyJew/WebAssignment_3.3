@@ -12,6 +12,9 @@ angular.module("myApp")
         ServerHandler.Get_Details_About_A_Point_Of_Interest(self.poiID)
             .then(function (response) {
                 $scope.poi = response;
+                $scope.reviewsExists = $scope.poi.Number_Of_Reviews > 0;
+                $scope.oneReview = $scope.poi.Number_Of_Reviews == 1;
+
                 ServerHandler.Get_POI_Image(self.poiID)
                     .then(function (response) {
                         $scope.poi.image = response.Image_Path;

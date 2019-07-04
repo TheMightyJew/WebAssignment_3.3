@@ -16,7 +16,7 @@ angular.module("myApp")
                 ServerHandler.Login($scope.username, $scope.password)
                     .then(function (response) {
                         console.log('Logged in successfully!');
-                        console.log(response);
+                        //console.log(response);
                         self.userToken = response.Token;
                         $window.sessionStorage.setItem('isLogged', true);
                         $window.sessionStorage.setItem('token', self.userToken);
