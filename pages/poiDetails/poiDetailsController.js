@@ -1,6 +1,6 @@
 // poi controller
 angular.module("myApp")
-    .controller("poiDetailsController", function ($scope, $window, $routeParams, ServerHandler,UtilFunctions) {
+    .controller("poiDetailsController", function ($scope, $window, $routeParams, ServerHandler, UtilFunctions) {
         self.poiID = $routeParams.poiID;
         self.logged = $window.sessionStorage.getItem("isLogged");
         if (self.logged === null || self.logged === undefined || self.logged === false) {
@@ -23,6 +23,15 @@ angular.module("myApp")
                         console.log('There was a problem with the image');
                         console.log(err);
                     })
+
+                ServerHandler.Add_View_To_POI(self.poiID)
+                    .then(function (response) {
+                        //console.log(response);
+                    }).catch(function (err) {
+                        console.log('There was a problem with Add View');
+                        console.log(err);
+                    })
+
             }).catch(function (err) {
                 console.log('There was a problem');
                 console.log(err);
@@ -38,7 +47,7 @@ angular.module("myApp")
             }
         };
 
-        $scope.addReview = function(){
+        $scope.addReview = function () {
             $window.location.href = "#!review/" + self.poiID;
         }
     });

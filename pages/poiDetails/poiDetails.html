@@ -6,7 +6,7 @@
     <b><span style="font-size: 18px" ng-bind="poi.Number_Of_Views"></span></b> watched this point of interest.
     <br>
     <p ng-bind="poi.Description"></p>
-    <b style="font-size: 20px">Average Rank:</b> <span ng-bind="poi.Percentage_Rank"></span>
+    <b style="font-size: 20px">Average Rank:</b> <span ng-show="reviewsExists" ng-bind="poi.Percentage_Rank"></span>
     <h3 ng-hide="reviewsExists" style="color: red">There is no rank yet</h3>
     <br>
     <h2>Two latest reviews:</h2>

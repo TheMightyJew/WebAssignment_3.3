@@ -347,6 +347,17 @@ app.service('ServerHandler', function($http) {
         });
     }
 
+    this.Add_View_To_POI = function(POI_ID){
+        return new Promise(function(resolve, reject){
+            var req = {
+                method: 'PUT',
+                url: serverURL + '/Add_View_To_POI/' + POI_ID
+            }
+
+            sendRequest(req, resolve, reject, checkSuccess);
+        });
+    }
+
 
     function sendRequest(req, resolve, reject, isGoodResult){
         $http(req).then(function Success(response){
