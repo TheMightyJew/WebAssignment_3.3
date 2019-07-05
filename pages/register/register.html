@@ -23,8 +23,16 @@
         Email: <input type="email" name="registerEmail" ng-model="registerEmail" required>
         <span ng-show="registerForm.registerEmail.$error.required">This is required!</span>
         <span ng-show="registerForm.registerEmail.$invalid">Invalid field</span>
+        <br><br><br>
+
+        Topics: <select name="selectedTopics" ng-model="selectedTopics" ng-options="x for x in topics" size="4" multiple required>
+        </select>
+        <span ng-show="registerForm.selectedTopic1.$error.required">This is required!</span>
+        <span ng-show="registerForm.selectedTopic1.$invalid">Invalid field</span>
+        <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
         <br><br>
-        Topic 1: <select name="selectedTopic1" ng-model="selectedTopic1" ng-options="x for x in topics" required>
+
+        <!--Topic 1: <select name="selectedTopic1" ng-model="selectedTopic1" ng-options="x for x in topics" required>
         </select>
         <span ng-show="registerForm.selectedTopic1.$error.required">This is required!</span>
         <span ng-show="registerForm.selectedTopic1.$invalid">Invalid field</span>
@@ -33,15 +41,26 @@
         </select>
         <span ng-show="registerForm.selectedTopic2.$error.required">This is required!</span>
         <span ng-show="registerForm.selectedTopic2.$invalid">Invalid field</span>
-        <br><br>
-        Recovery Question: <select name="recoveryQuestion" ng-model="recoveryQuestion" ng-options="x for x in questions" required>
+        <br><br>-->
+
+
+        First Recovery Question: <select name="firstRecoveryQuestion" ng-model="firstRecoveryQuestion" ng-options="x for x in questions" required>
         </select>
-        <span ng-show="registerForm.recoveryQuestion.$error.required">This is required!</span>
-        <span ng-show="registerForm.recoveryQuestion.$invalid">Invalid field</span>
+        <span ng-show="registerForm.firstRecoveryQuestion.$error.required">This is required!</span>
+        <span ng-show="registerForm.firstRecoveryQuestion.$invalid">Invalid field</span>
         <br>
-        Recovery Question-Answer: <input type="text" name="recoveryAnswer" ng-model="recoveryAnswer" required>
-        <span ng-show="registerForm.recoveryAnswer.$error.required">This is required!</span>
-        <span ng-show="registerForm.recoveryAnswer.$invalid">Invalid field</span>
+        First Recovery Question-Answer: <input type="text" name="firstRecoveryAnswer" ng-model="firstRecoveryAnswer" required>
+        <span ng-show="registerForm.firstRecoveryAnswer.$error.required">This is required!</span>
+        <span ng-show="registerForm.firstRecoveryAnswer.$invalid">Invalid field</span>
+        <br><br>
+        Second Recovery Question: <select name="secondRecoveryQuestion" ng-model="secondRecoveryQuestion" ng-options="x for x in questions" required>
+        </select>
+        <span ng-show="registerForm.secondRecoveryQuestion.$error.required">This is required!</span>
+        <span ng-show="registerForm.secondRecoveryQuestion.$invalid">Invalid field</span>
+        <br>
+        Second Recovery Question-Answer: <input type="text" name="secondRecoveryAnswer" ng-model="secondRecoveryAnswer" required>
+        <span ng-show="registerForm.secondRecoveryAnswer.$error.required">This is required!</span>
+        <span ng-show="registerForm.secondRecoveryAnswer.$invalid">Invalid field</span>
         <br><br>
         Username: <input type="text" name="registerUsername" ng-model="registerUsername" required minlength="3"
             maxlength="8" pattern='^[a-zA-Z]*$'>

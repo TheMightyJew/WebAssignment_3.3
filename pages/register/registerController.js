@@ -46,17 +46,20 @@ angular.module("myApp")
         });
 
         $scope.register = function () {
-            var topics = [];
-            topics.push({
-                Topic_ID: document.getElementsByName('selectedTopic1')[0].selectedIndex
-            });
-            topics.push({
-                Topic_ID: document.getElementsByName('selectedTopic2')[0].selectedIndex
-            });
+            var firstQindex = document.getElementsByName('firstRecoveryQuestion')[0].selectedIndex;
+            var secondQindex = document.getElementsByName('secondRecoveryQuestion')[0].selectedIndex;
+            if(firstQindex === secondQindex){
+                UtilFunctions.Message("Recovery Questions must be different")";
+                return;
+            }
             var questions = [];
             questions.push({
-                Question_ID: document.getElementsByName('recoveryQuestion')[0].selectedIndex,
-                Answer: $scope.recoveryAnswer
+                Question_ID: document.getElementsByName('firstRecoveryQuestion')[0].selectedIndex,
+                Answer: $scope.firstRecoveryAnswer
+            });
+            questions.push({
+                Question_ID: document.getElementsByName('secondRecoveryQuestion')[0].selectedIndex,
+                Answer: $scope.secondRecoveryAnswer
             });
             /*
             questions.push({
@@ -64,6 +67,23 @@ angular.module("myApp")
                 Answer: 'pet'
             });
             */
+
+            var topics = [];
+            var options = document.getElementsByName('selectedTopics')[0].options;
+            for(var i=0;i<options;i++){
+                if(options[0].selected){
+                    topics.push({
+                        Topic_ID: i
+                    });
+                }
+            }
+            /*topics.push({
+                Topic_ID: document.getElementsByName('selectedTopic1')[0].selectedIndex
+            });
+            topics.push({
+                Topic_ID: document.getElementsByName('selectedTopic2')[0].selectedIndex
+            });*/
+
             //                                          Username,Password,              First_Name,Last_Name,                               City,                   Country,                    Email,      Topics_List,Security_Questions_List
             ServerHandler.Register_User($scope.registerUsername, $scope.registerPassword, $scope.registerFirstName, $scope.registerLastName, $scope.registerCity, $scope.selectedCountry, $scope.registerEmail, topics, questions)
             .then(function (response) {

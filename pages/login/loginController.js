@@ -27,7 +27,7 @@ angular.module("myApp")
                         ServerHandler.Get_All_Favorites(self.userToken)
                         .then(function(favorites){
                             $window.sessionStorage.setItem("favorites",JSON.stringify(favorites));
-                            $rootScope.favoritesCount = 'Favorites (' + favorites.length + ')';
+                            $rootScope.favoritesCount = favorites.length
                             $rootScope.isLogged = true;
                             $window.location.href = "#!homeRegistered"
                         })
