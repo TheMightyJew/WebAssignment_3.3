@@ -2,6 +2,7 @@
 angular.module("myApp")
 .controller("poiController", function ($scope) {
     self = this;
+    $scope.isLogged = UtilFunctions.isLogged();
     self.pointsOfInterests = {
         cities: {
             1: { name: "Paris", state: "France", image: "https://media-cdn.tripadvisor.com/media/photo-s/0d/f5/7c/f2/eiffel-tower-priority.jpg" },
@@ -20,4 +21,13 @@ angular.module("myApp")
     $scope.search = function(){
 
     }
+    $scope.favoriteChange = function (POI_ID) {
+        var favorite = document.getElementsByName("isFavorite"+POI_ID)[0].checked;
+        if (favorite) {
+            UtilFunctions.AddToFavorites(POI_ID);
+        }
+        else {
+            UtilFunctions.RemoveFromFavorites(POI_ID);
+        }
+    };
 });

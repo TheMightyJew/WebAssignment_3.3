@@ -42,7 +42,8 @@
     <!-- the website -->
     <h1 ng-init="loggedUsername='guest'">Hello {{loggedUsername}}!</h1>
     <button ng-show="isLogged">
-        <a ng-init="favoritesCount='Favorites (0)'" ng-bind="favoritesCount" href="#!favorites"></a>
+        <a href="#!favorites">Favorites: </a>
+        <a ng-init="favoritesCount='0'" ng-bind="favoritesCount" href="#!favorites"></a>
     </button>
     <!-- menu -->
     <ul ng-init="isLogged=false">

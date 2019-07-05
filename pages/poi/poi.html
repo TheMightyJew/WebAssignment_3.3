@@ -26,6 +26,10 @@ Search By Name: <input type="text" ng-model="poiNameSearch">
             <span ng-bind="poi.name"></span>
             <br>
             <img ng-src="{{ poi.image }}">
+            <br>
+            <div ng-show="isLogged">
+                Favorite <input type="checkbox" name="isFavorite.{{poi.POI_ID}}" ng-click="favoriteChange(poi.POI_ID)">
+            </div>
         </p>
     </div>
 </center>

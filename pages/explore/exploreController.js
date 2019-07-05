@@ -1,8 +1,8 @@
 // poi controller
 angular.module("myApp")
-    .controller("exploreController", function ($scope, $window, ServerHandler) {
+    .controller("exploreController", function ($scope, $window, ServerHandler,UtilFunctions) {
         self = this;
-
+        $scope.isLogged = UtilFunctions.isLogged();
         ServerHandler.Get_Random_Points_Of_Interests()
         .then(function (response) {
             //How the fuck do I perform a loop here
@@ -70,6 +70,16 @@ angular.module("myApp")
         };
         $scope.showPoi = function (POI_ID) {
             $window.location.href = "#!poiDetails/" + POI_ID;
+        };
+
+        $scope.favoriteChange = function (POI_ID) {
+            var favorite = document.getElementsByName("isFavorite"+POI_ID)[0].checked;
+            if (favorite) {
+                UtilFunctions.AddToFavorites(POI_ID);
+            }
+            else {
+                UtilFunctions.RemoveFromFavorites(POI_ID);
+            }
         };
 
     //var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzbnIiLCJVc2VybmFtZSI6ImEiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU2MjA4NjkxOSwiZXhwIjoxNTYyMTczMzE5fQ.jKr19KY0dE5JHfUzcwzZ1gOc_YUbX29bTsQZLELVKt0'

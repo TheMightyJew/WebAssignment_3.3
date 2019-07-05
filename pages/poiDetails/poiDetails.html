@@ -23,7 +23,7 @@
     </div>
     <h3 ng-show="oneReview" style="color: red">There is only 1 review for this point of interest.</h3>
     <div ng-show="isLogged">
-        Favorite <input type="checkbox" name="isFavorite" ng-click="save()">
+        Favorite <input type="checkbox" name="isFavorite" ng-click="favoriteChange()">
         <br><br>
         <Button ng-click='addReview()'>Add Review</Button>
     </div>

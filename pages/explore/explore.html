@@ -1,18 +1,25 @@
 <!-- css -->
 <style>
-        img {
-            height: 300px;
-        }
-    </style>
-    <script src="services/ServerHandler.js"></script>
-    <h2>POI</h2>
-    
-    <!-- display all cities -->
-    <center>
-        <p ng-repeat="poi in Points">
-            <br>
-            <span ng-click="showPoi(poi.POI_ID)" ng-bind="poi.Name"></span>
-            <br>
-            <img ng-click="showPoi(poi.POI_ID)" ng-src="{{ poi.Image_Path }}">
-        </p>
-    </center>
+    img {
+        height: 300px;
+    }
+</style>
+<script src="services/ServerHandler.js"></script>
+
+<!-- display all cities -->
+<center>
+    <h2>Point Of Interests:</h2>
+    <br>
+    <img ng-src="pages\explore\Aladdin_POI_Meme.jpeg">
+    <br><br>
+    <p ng-repeat="poi in Points">
+        <br>
+        <span ng-click="showPoi(poi.POI_ID)" ng-bind="poi.Name"></span>
+        <br>
+        <img ng-click="showPoi(poi.POI_ID)" ng-src="{{ poi.Image_Path }}">
+        <br>
+        <div ng-show="isLogged">
+            Favorite <input type="checkbox" name="isFavorite.{{poi.POI_ID}}" ng-click="favoriteChange(poi.POI_ID)">
+        </div>
+    </p>
+</center>

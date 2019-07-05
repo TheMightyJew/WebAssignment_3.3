@@ -1,6 +1,6 @@
 // poi controller
 angular.module("myApp")
-    .controller("favoritesController", function ($scope, $window, ServerHandler, UtilFunctions) {
+    .controller("favoritesController", function ($scope,$rootScope, $window, ServerHandler, UtilFunctions) {
         self = this;
         initPoints();
 
@@ -18,7 +18,7 @@ angular.module("myApp")
                 details_list.push(ServerHandler.Get_Details_About_A_Point_Of_Interest(curr_ID));
                 images_list.push(ServerHandler.Get_POI_Image(curr_ID));
             }
-
+            $rootScope.favoritesCount = favorites.length;
             Promise.all(details_list)
                 .then((details) => {
                     for (var i = 0; i < details.length; i++) {
@@ -68,11 +68,11 @@ angular.module("myApp")
         }
         $scope.resetFavorites = function () {
             var token = $window.sessionStorage.getItem("token");
-
             ServerHandler.Get_All_Favorites(token)
                 .then(function (favorites) {
                     $window.sessionStorage.setItem("favorites", JSON.stringify(favorites));
                     initPoints();
+
                 })
                 .catch(function (err) {
                     console.log(err);
@@ -99,7 +99,6 @@ angular.module("myApp")
                     //console.log(err);
                     UtilFunctions.Message('There was an error saving the favorites :(')
                 })
-
         }
         function saveLocalOrder() {
             favorites = []
