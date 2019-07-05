@@ -7,29 +7,28 @@
 
 <h2>POI</h2>
 
-<!-- display all cities -->
-<button ng-click="categoriesSort()">Sort By Categories</button>
 <button ng-click="rankSort()">Sort By Rank</button>
 <br><br>
 Show Category: <select name="category" id="category" ng-model="selectedCategory"
-    ng-options="x for x in categories"></select>
+    ng-options="x.Topic for x in categories"></select>
 <button ng-click="show()">Show!</button>
 <br>
 <br>
 Search By Name: <input type="text" ng-model="poiNameSearch">
 <button ng-click="search()">Search!</button>
 <center>
-    <div ng-repeat="(topic, poiList) in pointsOfInterests">
-        <span ng-bind="topic"></span>
-        <p ng-repeat="(id, poi) in poiList">
+    <div ng-repeat="topic_poi in pointsOfInterests">
+        <h3 ng-show="topic_poi.Points.length > 0" ng-bind="topic_poi.Topic"></h3>
+        <p ng-repeat="poi in topic_poi.Points">
             <br>
-            <span ng-bind="poi.name"></span>
+            <span ng-click="showPoi(poi.POI_ID)" ng-bind="poi.Name"></span>
             <br>
-            <img ng-src="{{ poi.image }}">
+            <img ng-click="showPoi(poi.POI_ID)" ng-src="{{ poi.Image_Path }}">
             <br>
-            <div ng-show="isLogged">
-                Favorite <input type="checkbox" name="isFavorite.{{poi.POI_ID}}" ng-click="favoriteChange(poi.POI_ID)">
-            </div>
+            <span ng-show="isLogged">
+                Favorite <input type="checkbox" ng-model="clicked" ng-init="clicked=poi.Is_Favorite" name="isFavorite.{{poi.POI_ID}}" ng-click="favoriteChange(poi.POI_ID)">
+            </span>
         </p>
+        <br>
     </div>
 </center>

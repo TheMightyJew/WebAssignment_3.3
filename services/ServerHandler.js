@@ -358,6 +358,21 @@ app.service('ServerHandler', function($http) {
         });
     }
 
+    this.Update_Favorites_List = function(Token, Favorites_List){
+        return new Promise(function(resolve, reject){
+            var req = {
+                method: 'PUT',
+                url: serverURL + '/Update_Favorites_List',
+                headers: {
+                    'x-auth-token': Token
+                },
+                data: Favorites_List
+            }
+
+            sendRequest(req, resolve, reject, checkSuccess);
+        });
+    }
+    
 
     function sendRequest(req, resolve, reject, isGoodResult){
         $http(req).then(function Success(response){

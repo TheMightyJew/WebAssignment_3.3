@@ -80,20 +80,13 @@ angular.module("myApp")
         }
         $scope.saveOrder = function () {
             var token = $window.sessionStorage.getItem("token");
-            var poiAndLocationList = [];
             var favorites = JSON.parse($window.sessionStorage.getItem("favorites"));
 
-            for (var i = 0; i < favorites.length; i++) {
-                poiAndLocationList.push({
-                    POI_ID: favorites[i].POI_ID,
-                    Location: i
-                });
-            }
-            ServerHandler.Update_Favorites_List_Locations(token, poiAndLocationList)
+            ServerHandler.Update_Favorites_List(token, favorites)
                 .then(function (response) {
                     //console.log('Success!');
                     //console.log(response);
-                    UtilFunctions.Message('Saved the order of the favorites!')
+                    UtilFunctions.Message('Saved the favorites successfully!')
                 }).catch(function (err) {
                     //console.log('There was a problem :(');
                     //console.log(err);

@@ -49,7 +49,7 @@ angular.module("myApp")
             var firstQindex = document.getElementsByName('firstRecoveryQuestion')[0].selectedIndex;
             var secondQindex = document.getElementsByName('secondRecoveryQuestion')[0].selectedIndex;
             if(firstQindex === secondQindex){
-                UtilFunctions.Message("Recovery Questions must be different")";
+                UtilFunctions.Message("Recovery Questions must be different");
                 return;
             }
             var questions = [];

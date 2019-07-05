@@ -15,7 +15,9 @@ app.service('UtilFunctions', function ($window,$rootScope) {
 
     this.AddToFavorites = function(POI_ID){
         var favorites = JSON.parse($window.sessionStorage.getItem("favorites"));
-        //add new poi to favorites
+        favorites.push({
+            POI_ID: POI_ID
+        });
         $window.sessionStorage.setItem("favorites", JSON.stringify(favorites));
         $rootScope.favoritesCount = $rootScope.favoritesCount+1;
     }
