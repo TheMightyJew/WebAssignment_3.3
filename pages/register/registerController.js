@@ -70,13 +70,15 @@ angular.module("myApp")
 
             var topics = [];
             var options = document.getElementsByName('selectedTopics')[0].options;
-            for(var i=0;i<options;i++){
-                if(options[0].selected){
+            
+            for(var i=0;i<options.length;i++){
+                if(options[i].selected){
                     topics.push({
                         Topic_ID: i
                     });
                 }
             }
+
             /*topics.push({
                 Topic_ID: document.getElementsByName('selectedTopic1')[0].selectedIndex
             });

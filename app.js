@@ -32,7 +32,7 @@ app.config(function($routeProvider)  {
             templateUrl: 'pages/register/register.html',
             controller : 'registerController as registerCtrl'
         })
-        .when('/recoverPassword', {
+        .when('/recoverPassword/:username', {
             templateUrl: 'pages/recoverPassword/recoverPassword.html',
             controller : 'recoverPasswordController as recoverPasswordCtrl'
         })

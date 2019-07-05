@@ -95,8 +95,12 @@ angular.module("myApp")
             });
 
             for(var j = 0; j < curr_points.length; j++){
-                var favorite = favorites.filter(function(e) { return e.POI_ID === curr_points[j].POI_ID; }).length > 0;
-
+                var favorite;
+                if(UtilFunctions.isLogged())
+                    favorite = favorites.filter(function(e) { return e.POI_ID === curr_points[j].POI_ID; }).length > 0;
+                else
+                    favorite = false;
+                    
                 curr_points[j].Is_Favorite = favorite;
             }
 
@@ -142,13 +146,25 @@ angular.module("myApp")
     }
     $scope.search = function(){
         //search POI by name:
-        ServerHandler.Get_Points_Of_Interest_By_Name($scope.poiNameSearch)
+        if($scope.poiNameSearch === undefined || $scope.poiNameSearch === ""){
+            //show all:
+            ServerHandler.Get_All_Points_Of_Interest()
             .then(function(poiList){
                 initPoints(poiList, $scope.categories);
             })
             .catch(function(err){
                 console.log(err);
             })
+        }
+        else{
+            ServerHandler.Get_Points_Of_Interest_By_Name($scope.poiNameSearch)
+            .then(function(poiList){
+                initPoints(poiList, $scope.categories);
+            })
+            .catch(function(err){
+                console.log(err);
+            })
+        }
     }
     $scope.favoriteChange = function (POI_ID) {
         var favorite = document.getElementsByName("isFavorite."+POI_ID)[0].checked;

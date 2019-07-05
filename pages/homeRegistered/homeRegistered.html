@@ -12,45 +12,45 @@
     <table>
         <tr>
             <td>
-                <h3 ng-bind="topic1">{{topic1}}</h3>
+                <h3 ng-bind="poiTopic1.Topic"></h3>
                 <span ng-click="showPoi(poiTopic1.POI_ID)" ng-bind="poiTopic1.Name"></span>
                 <br>
-                <img ng-click="showPoi(poiTopic1.POI_ID)" ng-src="{{ poiTopic1.Image}}">
+                <img ng-click="showPoi(poiTopic1.POI_ID)" ng-src="{{ poiTopic1.Image_Path}}">
                 <br>
                 <div ng-show="isLogged">
-                    Favorite <input type="checkbox" name="isFavorite" ng-click="favoriteChange(0,poiTopic1.POI_ID)">
+                    Favorite <input type="checkbox" ng-model="clickedTopic1" name="isFavorite" ng-click="favoriteChange(0,poiTopic1.POI_ID)">
                 </div>
             </td>
             <td>
                 <h3>Last Saved</h3>
                 <span ng-click="showPoi(lastSaved.POI_ID)" ng-bind="lastSaved.Name"></span>
                 <br>
-                <img ng-click="showPoi(lastSaved.naPOI_IDme)" ng-src="{{ lastSaved.Image }}">
+                <img ng-click="showPoi(lastSaved.POI_ID)" ng-src="{{ lastSaved.Image_Path }}">
                 <br>
                 <div ng-show="isLogged">
-                    Favorite <input type="checkbox" name="isFavorite" ng-click="favoriteChange(1,lastSaved.POI_ID)">
+                    Favorite <input type="checkbox" ng-model="clickedLastSaved" name="isFavorite" ng-click="favoriteChange(1,lastSaved.POI_ID)">
                 </div>
             </td>
         </tr>
         <tr>
             <td>
-                <h3 ng-bind="topic2"></h3>
+                <h3 ng-bind="poiTopic2.Topic"></h3>
                 <span ng-click="showPoi(poiTopic2.POI_ID)" ng-bind="poiTopic2.Name"></span>
                 <br>
-                <img ng-click="showPoi(poiTopic2.POI_ID)" ng-src="{{ poiTopic2.Image }}">
+                <img ng-click="showPoi(poiTopic2.POI_ID)" ng-src="{{ poiTopic2.Image_Path }}">
                 <br>
                 <div ng-show="isLogged">
-                    Favorite <input type="checkbox" name="isFavorite" ng-click="favoriteChange(2,poiTopic2.POI_ID)">
+                    Favorite <input type="checkbox" ng-model="clickedTopic2" name="isFavorite" ng-click="favoriteChange(2,poiTopic2.POI_ID)">
                 </div>
             </td>
             <td>
                 <h3>Previous Saved</h3>
                 <span ng-click="showPoi(previousSaved.POI_ID)" ng-bind="previousSaved.Name"></span>
                 <br>
-                <img ng-click="showPoi(previousSaved.POI_ID)" ng-src="{{ previousSaved.Image }}">
+                <img ng-click="showPoi(previousSaved.POI_ID)" ng-src="{{ previousSaved.Image_Path }}">
                 <br>
                 <div ng-show="isLogged">
-                    Favorite <input type="checkbox" name="isFavorite" ng-click="favoriteChange(3,previousSaved.POI_ID)">
+                    Favorite <input type="checkbox" ng-model="clickedPrev" name="isFavorite" ng-click="favoriteChange(3,previousSaved.POI_ID)">
                 </div>
             </td>
         </tr>

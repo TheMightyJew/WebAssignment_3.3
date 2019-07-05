@@ -2,12 +2,20 @@ angular.module("myApp")
     .controller("loginController", function ($scope,$rootScope, $window, $rootScope, ServerHandler, UtilFunctions) {
         self.recover = false;
         $scope.recoverPassword = function () {
+            self.recover = true;
             if ($scope.username === undefined) {
-                $window.alert("error");
-                self.recover = true;
+                UtilFunctions.Message("Please enter the username that you wish to recover");
             }
             else {
-                $window.location.href = "#!recoverPassword";
+                ServerHandler.Get_Security_Question($scope.username)
+                .then(function(response){
+                    //username exists
+                    $window.location.href = "#!recoverPassword/" + $scope.username;
+                })
+                .catch(function(err){
+                    //username does not exist
+                    UtilFunctions.Message("This username does not exist");
+                })
             }
         };
         $scope.login = function () {
@@ -28,6 +36,12 @@ angular.module("myApp")
                         .then(function(favorites){
                             $window.sessionStorage.setItem("favorites",JSON.stringify(favorites));
                             $rootScope.favoritesCount = favorites.length
+                            $rootScope.isLogged = true;
+                            $window.location.href = "#!homeRegistered"
+                        })
+                        .catch(function(err){
+                            $window.sessionStorage.setItem("favorites",JSON.stringify([]));
+                            $rootScope.favoritesCount = 0;
                             $rootScope.isLogged = true;
                             $window.location.href = "#!homeRegistered"
                         })
