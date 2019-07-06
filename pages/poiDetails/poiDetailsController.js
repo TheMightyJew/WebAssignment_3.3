@@ -28,12 +28,28 @@ angular.module("myApp")
                             console.log(err);
                         })
 
+                    handleIsFavorite();
+
                 }).catch(function (err) {
                     console.log('There was a problem');
                     console.log(err);
                     UtilFunctions.Message("Failed");
                 })
         }
+
+        function handleIsFavorite() {
+
+            var favorites = JSON.parse($window.sessionStorage.getItem("favorites"));
+
+            var favorite;
+            if (UtilFunctions.isLogged())
+                favorite = favorites.filter(function (e) { return e.POI_ID === $scope.poi.POI_ID; }).length > 0;
+            else
+                favorite = false;
+
+            $scope.clickedFavorite = favorite;
+        }
+
         $scope.favoriteChange = function () {
             var favorite = document.getElementsByName("isFavorite")[0].checked;
             if (favorite) {
@@ -50,7 +66,7 @@ angular.module("myApp")
             init();
             $window.location.href = "#!review/" + self.poiID;
             */
-           var modal = document.getElementById("myDialog");
-           modal.showModal();
+            var modal = document.getElementById("myDialog");
+            modal.showModal();
         }
     });
