@@ -1,3 +1,5 @@
+
+<script type="text/javascript" src="reviewController.js"></script>
 <form name="reviewForm" ng-submit="submitReview()" novalidate>
         Rank: <select name="reviewRank" ng-model="reviewRank" ng-options="x for x in [1,2,3,4,5]" required></select>
         <span ng-show="reviewForm.reviewRank.$error.required">This is required!</span>
