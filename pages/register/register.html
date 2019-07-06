@@ -1,31 +1,33 @@
 <body>
+
     <form name="registerForm" ng-submit="register()" novalidate>
-        First Name: <input type="text" name="registerFirstName" ng-model="registerFirstName" required
+        First Name: <br> <input type="text" name="registerFirstName" ng-model="registerFirstName" required
             pattern='^[a-zA-Z]*$'>
         <span ng-show="registerForm.registerFirstName.$error.required">This is required!</span>
         <span ng-show="registerForm.registerFirstName.$error.pattern">Letters only!</span>
         <span ng-show="registerForm.registerFirstName.$invalid">Invalid field</span>
-        <br>
-        Last Name: <input type="text" name="registerLastName" ng-model="registerLastName" required
+        <br><br> 
+        Last Name: <br> <input type="text" name="registerLastName" ng-model="registerLastName" required
             pattern='^[a-zA-Z ]*$'>
         <span ng-show="registerForm.registerLastName.$error.required">This is required!</span>
         <span ng-show="registerForm.registerLastName.$error.pattern">Letters only!</span>
         <span ng-show="registerForm.registerLastName.$invalid">Invalid field</span>
-        <br><br>
-        City: <input type="text" name="registerCity" ng-model="registerCity" required pattern='^[a-zA-Z ]*$'>
+        <br><br><br> 
+        City: <br> <input type="text" name="registerCity" ng-model="registerCity" required pattern='^[a-zA-Z ]*$'>
         <span ng-show="registerForm.registerCity.$error.required">This is required!</span>
         <span ng-show="registerForm.registerCity.$error.pattern">Letters only!</span>
         <span ng-show="registerForm.registerCity.$invalid">Invalid field</span>
-        <br>
-        Coutry <select ng-model="selectedCountry" ng-options="x for x in countries">
+        <br><br> 
+        Country <select ng-model="selectedCountry" ng-options="x for x in countries">
         </select>
         <br><br>
-        Email: <input type="email" name="registerEmail" ng-model="registerEmail" required>
+        Email: <br> <input type="email" name="registerEmail" ng-model="registerEmail" required>
         <span ng-show="registerForm.registerEmail.$error.required">This is required!</span>
         <span ng-show="registerForm.registerEmail.$invalid">Invalid field</span>
-        <br><br><br>
+        <br>
 
-        Topics: <select name="selectedTopics" ng-model="selectedTopics" ng-options="x for x in topics" multiple required>
+        Topics: <select name="selectedTopics" ng-model="selectedTopics" ng-options="x for x in topics" multiple
+            size="4" required>
         </select>
         <span ng-show="registerForm.selectedTopic1.$error.required">This is required!</span>
         <span ng-show="registerForm.selectedTopic1.$invalid">Invalid field</span>
@@ -44,39 +46,43 @@
         <br><br>-->
 
 
-        First Recovery Question: <select name="firstRecoveryQuestion" ng-model="firstRecoveryQuestion" ng-options="x for x in questions" required>
+        First Recovery Question: <br> <select name="firstRecoveryQuestion" ng-model="firstRecoveryQuestion"
+            ng-options="x for x in questions" required>
         </select>
         <span ng-show="registerForm.firstRecoveryQuestion.$error.required">This is required!</span>
         <span ng-show="registerForm.firstRecoveryQuestion.$invalid">Invalid field</span>
-        <br>
-        First Recovery Question-Answer: <input type="text" name="firstRecoveryAnswer" ng-model="firstRecoveryAnswer" required>
+        <br><br> 
+        First Recovery Question-Answer: <br> <input type="text" name="firstRecoveryAnswer" ng-model="firstRecoveryAnswer"
+            required>
         <span ng-show="registerForm.firstRecoveryAnswer.$error.required">This is required!</span>
         <span ng-show="registerForm.firstRecoveryAnswer.$invalid">Invalid field</span>
-        <br><br>
-        Second Recovery Question: <select name="secondRecoveryQuestion" ng-model="secondRecoveryQuestion" ng-options="x for x in questions" required>
+        <br><br><br> 
+        Second Recovery Question: <br> <select name="secondRecoveryQuestion" ng-model="secondRecoveryQuestion"
+            ng-options="x for x in questions" required>
         </select>
         <span ng-show="registerForm.secondRecoveryQuestion.$error.required">This is required!</span>
         <span ng-show="registerForm.secondRecoveryQuestion.$invalid">Invalid field</span>
-        <br>
-        Second Recovery Question-Answer: <input type="text" name="secondRecoveryAnswer" ng-model="secondRecoveryAnswer" required>
+        <br><br> 
+        Second Recovery Question-Answer: <br> <input type="text" name="secondRecoveryAnswer" ng-model="secondRecoveryAnswer"
+            required>
         <span ng-show="registerForm.secondRecoveryAnswer.$error.required">This is required!</span>
         <span ng-show="registerForm.secondRecoveryAnswer.$invalid">Invalid field</span>
-        <br><br>
-        Username: <input type="text" name="registerUsername" ng-model="registerUsername" required minlength="3"
+        <br><br><br> 
+        Username: <br> <input type="text" name="registerUsername" ng-model="registerUsername" required minlength="3"
             maxlength="8" pattern='^[a-zA-Z]*$'>
         <span ng-show="registerForm.registerUsername.$error.required">This is required!</span>
         <span ng-show="registerForm.registerUsername.$error.pattern">Letters only!</span>
         <span ng-show="registerForm.registerUsername.$error.minlength">Minimum length is 3!</span>
         <span ng-show="registerForm.registerUsername.$invalid">Invalid field</span>
-        <br>
-        Password: <input type="password" name="registerPassword" ng-model="registerPassword" required minlength="5"
+        <br><br> 
+        Password: <br> <input type="password" name="registerPassword" ng-model="registerPassword" required minlength="5"
             maxlength="10" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{0,10}$">
         <span ng-show="registerForm.registerPassword.$error.required">This is required!</span>
         <span ng-show="registerForm.registerPassword.$error.pattern">Password must combine both letters and
             digits!</span>
         <span ng-show="registerForm.registerPassword.$error.minlength">Minimum length is 5!</span>
         <span ng-show="registerForm.registerPassword.$invalid">Invalid field</span>
-        <br><br>
+        <br><br><br> 
         <input type="submit" ng-disabled="registerForm.$invalid" id="register" value="register">
     </form>
 

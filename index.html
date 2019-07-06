@@ -31,56 +31,47 @@
 <script src="services/ServerHandler.js"></script>
 <script src="services/UtilFunctions.js"></script>
 
-
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "indexStyle.css" />
 
 
 
 <!-- _____________________imports_____________________ -->
 
-<style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: url('Catalonia_Flag.jpeg');
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-    </style>
 
-<body ng-app="myApp">
+<body class="indexBody" ng-app="myApp">
 
     <!-- the website -->
-    <h1 ng-init="loggedUsername='guest'">Hello {{loggedUsername}}!</h1>
+    <h1 style="background-color: cadetblue" ng-init="loggedUsername='guest'">Hello {{loggedUsername}}!</h1>
     <button ng-show="isLogged">
         <a href="#!favorites">Favorites: </a>
         <a ng-init="favoritesCount='0'" ng-bind="favoritesCount" href="#!favorites"></a>
     </button>
-    <!-- menu -->
-    <ul ng-init="isLogged=false">
-        <li ng-show="isLogged">
-            <a href="#!homeRegistered">Home</a>
-        </li>
-        <li>
-            <a href="#!">Explore</a>
-        </li>
-        <li>
-            <a href="#!about">About</a>
-        </li>
-        <li>
-            <a href="#!poi">POI</a>
-        </li>
-        <li ng-show="!isLogged">
-            <a href="#!login">Login</a>
-        </li>
-        <li ng-show="!isLogged">
-            <a href="#!register">Register</a>
-        </li>
-    </ul>
+    <!-- menu 
+    <br>
+    <div ng-init="isLogged=false">
+        <button ng-show="isLogged" class="meunButton"><a href="#!homeRegistered">Home</a></button>
+        <button class="meunButton"><a href="#!">Explore</a></button>
+        <button class="meunButton"><a href="#!about">About</a></button>
+        <button class="meunButton"><a href="#!poi">POI</a></button>
+        <button ng-show="!isLogged" class="meunButton"><a href="#!login">Login</a></button>
+        <button ng-show="!isLogged" class="meunButton"><a href="#!register">Register</a></button>
+    </div>-->
+    <br>
+    <nav ng-init="isLogged=false">
+        <a class="btn" ng-show="isLogged" href="#!homeRegistered">Home</a>
+        <a class="btn" href="#!">Explore</a>
+        <a class="btn" href="#!about">About</a>
+        <a class="btn" href="#!poi">POI</a>
+        <a class="btn" ng-show="!isLogged" href="#!login">Login</a>
+        <a class="btn" ng-show="!isLogged" href="#!register">Register</a>
+    </nav>
+    <br>
+    <br>
 
     <!-- This section changes as the hashbang changes -->
-    <div ng-view></div>
 </body>
+<div ng-view></div>
 
 </html>
