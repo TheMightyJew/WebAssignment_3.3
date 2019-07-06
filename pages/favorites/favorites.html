@@ -22,5 +22,14 @@
         <img ng-click="showPoi(poi.POI_ID)" ng-src="{{ poi.Image_Path }}">
         <br><br>
         <button ng-click="removePOI(poi.POI_ID)">Remove from favorites</button>
-     </p>
+        <button style="margin-left: 5px" ng-click="movePOI(poi.POI_ID)">Change Placement</button>
+    </p>
+
+
+    <dialog id="ChangeLocationDialog">
+        <select name="index" id="index" ng-model="selectedIndex" ng-options="x for x in indexes"></select>
+        <br>
+        <button ng-click="confirmChoice(selectedIndex)">Confirm</button>
+        <button style="margin-left: 5px" ng-click="cancelChoice()">Cancel</button>
+    </dialog>
 </center>

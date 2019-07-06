@@ -40,10 +40,6 @@ app.config(function($routeProvider)  {
             templateUrl: 'pages/poiDetails/poiDetails.html',
             controller : 'poiDetailsController as poiDetailsCtrl'
         })
-        .when('/review/:poiID', {
-            templateUrl: 'pages/review/review.html',
-            controller : 'reviewController as reviewCtrl'
-        })
         .when('/homeRegistered', {
             templateUrl: 'pages/homeRegistered/homeRegistered.html',
             controller : 'homeRegisteredController as homeRegisteredCtrl'

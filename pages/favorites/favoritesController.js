@@ -6,6 +6,9 @@ angular.module("myApp")
 
         function initPoints() {
             var favorites = JSON.parse($window.sessionStorage.getItem("favorites"));
+
+            $scope.indexes = [];
+
             images_list = [];
             details_list = [];
             $scope.Points = [];
@@ -17,6 +20,8 @@ angular.module("myApp")
                 $scope.Points.push(curr_POI);
                 details_list.push(ServerHandler.Get_Details_About_A_Point_Of_Interest(curr_ID));
                 images_list.push(ServerHandler.Get_POI_Image(curr_ID));
+
+                $scope.indexes.push(i);
             }
             $rootScope.favoritesCount = favorites.length;
             Promise.all(details_list)
@@ -93,6 +98,20 @@ angular.module("myApp")
                     UtilFunctions.Message('There was an error saving the favorites :(')
                 })
         }
+
+        $scope.movePOI = function(POI_ID){
+            self.currentPOIToMove = POI_ID;
+
+            var favorites = JSON.parse($window.sessionStorage.getItem("favorites"));
+            
+            $scope.selectedIndex = favorites.findIndex(function(obj){
+                return obj.POI_ID === POI_ID;
+            });
+
+            var modal = document.getElementById('ChangeLocationDialog');
+            modal.showModal();
+        }
+
         function saveLocalOrder() {
             favorites = []
             for (var i = 0; i < $scope.Points.length; i++) {
@@ -106,6 +125,62 @@ angular.module("myApp")
         $scope.removePOI = function (poiID) {
             UtilFunctions.RemoveFromFavorites(poiID);
             updatePoints();
+        }
+
+        $scope.confirmChoice = function(selectedIndex){
+            var favorites = JSON.parse($window.sessionStorage.getItem("favorites"));
+            var temp = [];
+			var seenPOI = false;
+            for(var i = 0; i < favorites.length; i++){
+                if(i < selectedIndex){
+                    if(favorites[i].POI_ID === self.currentPOIToMove){
+                        seenPOI = true;
+                    }
+					if(seenPOI){
+						temp.push(favorites[i+1]);
+					}
+					else{
+						temp.push(favorites[i]);
+					}              
+                }
+                else if(i === selectedIndex){
+                    if(favorites[i].POI_ID === self.currentPOIToMove){
+                        seenPOI = true;
+                        temp.push(favorites[i]);
+                    }
+                    else{
+                        var current = favorites.filter(function( obj ) {
+                            return obj.POI_ID === self.currentPOIToMove;
+                        })[0];
+                        temp.push(current);
+                    }
+                }
+				else{ //(i > selectedIndex){
+					if(seenPOI){
+						temp.push(favorites[i]);
+					}
+					else{
+						temp.push(favorites[i-1]);
+                    }  
+                    if(favorites[i].POI_ID === self.currentPOIToMove){
+                        seenPOI = true;
+                    }
+				}
+            }
+
+            $window.sessionStorage.setItem("favorites", JSON.stringify(temp));
+
+            closeChoice();
+            initPoints();
+        }
+
+        $scope.cancelChoice = function(){
+            closeChoice();
+        }
+
+        function closeChoice(){
+            var modal = document.getElementById('ChangeLocationDialog');
+            modal.close();
         }
 
         function updatePoints() {

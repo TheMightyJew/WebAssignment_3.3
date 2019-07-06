@@ -178,6 +178,7 @@ angular.module("myApp")
     };
 
     $scope.showPoi = function (POI_ID) {
-        $window.location.href = "#!poiDetails/" + POI_ID;
+        //$window.location.href = "#!poiDetails/" + POI_ID;
+        $window.open("#!poiDetails/" + POI_ID,'_blank');
     };
 });

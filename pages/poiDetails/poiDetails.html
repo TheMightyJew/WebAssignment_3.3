@@ -1,7 +1,10 @@
+
 <center>
     <h1 ng-bind="poi.POI_Name"></h1>
     <br>
     <img ng-src="{{poi.image}}" width="600px">
+    <br><br><br>
+    <div id="mapid" style="height: 400px; width: 600px;"></div>
     <br>
     <b><span style="font-size: 18px" ng-bind="poi.Number_Of_Views"></span></b> watched this point of interest.
     <br>
@@ -22,7 +25,7 @@
         <br>
     </div>
     <h3 ng-show="oneReview" style="color: red">There is only 1 review for this point of interest.</h3>
-    <div ng-show="isLogged">
+    <div style="margin-bottom: 20px" ng-show="isLogged">
         Favorite <input type="checkbox" ng-model="clickedFavorite" name="isFavorite" ng-click="favoriteChange()">
         <br><br>
         <Button ng-click='addReview()'>Add Review</Button>
@@ -40,5 +43,6 @@
         <span ng-show="reviewForm.description.$invalid">Invalid field</span>
         <br><br>
         <input type="submit" ng-disabled="reviewForm.$invalid" id="submitReview" value="submitReview">
+        <button ng-click="closeReview()">cancel</button>
     </form>
 </dialog>

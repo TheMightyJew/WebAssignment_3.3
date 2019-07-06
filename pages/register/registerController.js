@@ -4,7 +4,7 @@ angular.module("myApp")
         //load the topics:
         ServerHandler.Get_Topics()
         .then(function (response) {
-            console.log('Success!');
+            //console.log('Success!');
             var only_topics = [];
             for(var i = 0; i < response.length; i++){
                 only_topics.push(response[i].Topic);
@@ -19,7 +19,7 @@ angular.module("myApp")
         //load the security questions:
         ServerHandler.Get_All_Security_Questions()
         .then(function (response) {
-            console.log('Success!');
+            //console.log('Success!');
             var only_questions = [];
             for(var i = 0; i < response.length; i++){
                 only_questions.push(response[i].Question);
@@ -34,7 +34,7 @@ angular.module("myApp")
         //load the countries:
         ServerHandler.Get_Countries()
         .then(function (response) {
-            console.log('Success!');
+            //console.log('Success!');
             var only_countries = [];
             for(var i = 0; i < response.length; i++){
                 only_countries.push(response[i].Country);
@@ -89,12 +89,12 @@ angular.module("myApp")
             //                                          Username,Password,              First_Name,Last_Name,                               City,                   Country,                    Email,      Topics_List,Security_Questions_List
             ServerHandler.Register_User($scope.registerUsername, $scope.registerPassword, $scope.registerFirstName, $scope.registerLastName, $scope.registerCity, $scope.selectedCountry, $scope.registerEmail, topics, questions)
             .then(function (response) {
-                console.log('Success!');
+                //console.log('Success!');
                 UtilFunctions.Message(response);
                 $window.location.href = '#!login';
                 //console.log(response);
             }).catch(function (err) {
-                console.log('There was a problem :(');
+                //console.log('There was a problem :(');
                 UtilFunctions.Message(err);
                 //UtilFunctions.Message('There was a problem with the registeration');
                 //console.log(err);
