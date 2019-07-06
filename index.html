@@ -44,20 +44,12 @@
 
     <!-- the website -->
     <h1 style="background-color: cadetblue" ng-init="loggedUsername='guest'">Hello {{loggedUsername}}!</h1>
-    <button ng-show="isLogged">
-        <a href="#!favorites">Favorites: </a>
-        <a ng-init="favoritesCount='0'" ng-bind="favoritesCount" href="#!favorites"></a>
+    <button class="btn" ng-show="isLogged">
+        <b><a href="#!favorites">Favorites: </a>
+        <a ng-init="favoritesCount='0'" ng-bind="favoritesCount" href="#!favorites"></a></b>
     </button>
-    <!-- menu 
     <br>
-    <div ng-init="isLogged=false">
-        <button ng-show="isLogged" class="meunButton"><a href="#!homeRegistered">Home</a></button>
-        <button class="meunButton"><a href="#!">Explore</a></button>
-        <button class="meunButton"><a href="#!about">About</a></button>
-        <button class="meunButton"><a href="#!poi">POI</a></button>
-        <button ng-show="!isLogged" class="meunButton"><a href="#!login">Login</a></button>
-        <button ng-show="!isLogged" class="meunButton"><a href="#!register">Register</a></button>
-    </div>-->
+    <br>
     <br>
     <nav ng-init="isLogged=false">
         <a class="btn" ng-show="isLogged" href="#!homeRegistered">Home</a>

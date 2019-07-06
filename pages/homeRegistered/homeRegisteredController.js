@@ -92,7 +92,6 @@ angular.module("myApp")
             $scope.clickedTopic1 = $scope.poiTopic1.Is_Favorite;
             $scope.poiTopic2 = Points[1];
             $scope.clickedTopic2 = $scope.poiTopic2.Is_Favorite;
-            console.log(Points);
             $scope.$apply();
         }
 
@@ -102,8 +101,6 @@ angular.module("myApp")
             $scope.clickedLastSaved = $scope.lastSaved.Is_Favorite;
             $scope.previousSaved = Points[1];
             $scope.clickedPrev = $scope.previousSaved.Is_Favorite;
-            console.log($scope.lastSaved.Is_Favorite)
-            console.log(Points);
             $scope.$apply();
         }
 
