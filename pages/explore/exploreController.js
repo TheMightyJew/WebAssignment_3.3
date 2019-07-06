@@ -68,6 +68,13 @@ angular.module("myApp")
             }
         }
 
+        function showPressedFavorites(){
+            for(var i = 0; i < $scope.Points.length; i++){
+                $scope.clickedLastSaved = $scope.lastSaved.Is_Favorite;
+            }
+            
+        }
+
         function initializePOI(Points) {
             var jsonObj = {};
             for (var i = 0; i < Points.length; i++) {

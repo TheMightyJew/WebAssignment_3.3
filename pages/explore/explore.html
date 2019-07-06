@@ -19,7 +19,7 @@
         <img ng-click="showPoi(poi.POI_ID)" ng-src="{{ poi.Image_Path }}">
         <br>
         <span ng-show="isLogged">
-            Favorite <input type="checkbox" ng-model="clicked" ng-init="clicked=poi.Is_Favorite" name="isFavorite.{{poi.POI_ID}}" ng-click="favoriteChange(poi.POI_ID)">
+            Favorite <input type="checkbox" ng-model="clicked.{{poi.POI_ID}}" name="isFavorite.{{poi.POI_ID}}" ng-click="favoriteChange(poi.POI_ID)">
         </span>
     </p>
 </center>
