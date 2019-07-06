@@ -45,12 +45,36 @@ angular.module("myApp")
         };
 
         $scope.addReview = function () {
-            /*
-            $window.showModalDialog("pages\review\review.html", self.poiID);
+           self.modal = document.getElementById("myDialog");
+           self.closeModal = false;
+           self.modal.showModal();
+        
+        }
+
+        $scope.submitReview = function(){
+            if(closeModal === false){
+                var rank = $scope.reviewRank;
+                var description = $scope.description;
+                var token = $window.sessionStorage.getItem('token');
+                var POI_ID = $routeParams.poiID;
+                ServerHandler.Add_Review(token,POI_ID,rank,description)
+                .then(function (response) {
+                    UtilFunctions.Message('Uploaded the review successfully!');
+                    closeReview();
+                    //$window.location.href = "#!poiDetails/" + $routeParams.poiID;
+                }).catch(function (err) {
+                    console.log(err);
+                    UtilFunctions.Message('There was a problem uploading the review :(');
+                })
+            }
+            else{
+                closeModal = false;
+            }
+    
+        };
+        $scope.closeReview = function(){
+            self.closeModal = true;
+            self.modal.closeModal();
             init();
-            $window.location.href = "#!review/" + self.poiID;
-            */
-           var modal = document.getElementById("myDialog");
-           modal.showModal();
         }
     });
