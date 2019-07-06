@@ -45,8 +45,12 @@ angular.module("myApp")
         };
 
         $scope.addReview = function () {
+            /*
             $window.showModalDialog("pages\review\review.html", self.poiID);
             init();
             $window.location.href = "#!review/" + self.poiID;
+            */
+           var modal = document.getElementById("myDialog");
+           modal.showModal();
         }
     });
